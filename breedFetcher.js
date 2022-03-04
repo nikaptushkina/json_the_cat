@@ -2,7 +2,7 @@
 const request = require('request');
 
 // function to fetch breed data
-const fetchBreed = (breed, cb) => {
+const fetchBreedDescription = (breed, cb) => {
   const url =  `https://api.thecatapi.com/v1/breeds/search?q=${breed}`;
 
   request(url, (err, response, body) => {
@@ -21,14 +21,4 @@ const fetchBreed = (breed, cb) => {
   });
 };
 
-// connecting to command-line
-const breedName = process.argv[2];
-
-fetchBreed(breedName, (err, description) => {
-  if (err) {
-    console.log(`Error: ${err}`);
-  } else {
-    console.log(description);
-  }
-});
-
+module.exports = { fetchBreedDescription };
